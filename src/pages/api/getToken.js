@@ -2,7 +2,7 @@ const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const SPOTIFY_REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN;
 
-const authOptions = {
+const options = {
   method: "POST",
   headers: {
     Authorization:
@@ -21,7 +21,7 @@ const authOptions = {
 export default async function handler(req, res) {
   const response = await fetch(
     "https://accounts.spotify.com/api/token",
-    authOptions
+    options
   );
   const data = await response.json();
   res.status(200).json({ access_token: data.access_token });
